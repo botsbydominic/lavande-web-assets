@@ -1,0 +1,122 @@
+[
+  {
+    "file": "clients/lavande/assets/wp-ready\\lavande-exterior.jpg",
+    "name": "lavande-exterior.jpg",
+    "size_kb": 448,
+    "dims": [
+      2000,
+      1333
+    ],
+    "transparent": false
+  },
+  {
+    "file": "clients/lavande/assets/wp-ready\\lavande-wisteria-interior.jpg",
+    "name": "lavande-wisteria-interior.jpg",
+    "size_kb": 302,
+    "dims": [
+      2000,
+      1333
+    ],
+    "transparent": false
+  },
+  {
+    "file": "clients/lavande/assets/wp-ready\\lavande-nail-work-swatches.jpg",
+    "name": "lavande-nail-work-swatches.jpg",
+    "size_kb": 154,
+    "dims": [
+      2000,
+      1333
+    ],
+    "transparent": false
+  },
+  {
+    "file": "clients/lavande/assets/wp-ready\\lavande-raffia-interior.jpg",
+    "name": "lavande-raffia-interior.jpg",
+    "size_kb": 233,
+    "dims": [
+      2000,
+      1333
+    ],
+    "transparent": false
+  },
+  {
+    "file": "clients/lavande/assets/wp-ready\\lavande-hermes-chanel-polish-wall.jpg",
+    "name": "lavande-hermes-chanel-polish-wall.jpg",
+    "size_kb": 209,
+    "dims": [
+      2000,
+      1333
+    ],
+    "transparent": false
+  },
+  {
+    "file": "clients/lavande/assets/wp-ready\\lavande-technician-at-work.jpg",
+    "name": "lavande-technician-at-work.jpg",
+    "size_kb": 177,
+    "dims": [
+      2000,
+      1333
+    ],
+    "transparent": false
+  },
+  {
+    "file": "clients/lavande/assets/wp-ready\\lavande-vip-nail-room.jpg",
+    "name": "lavande-vip-nail-room.jpg",
+    "size_kb": 202,
+    "dims": [
+      2000,
+      1333
+    ],
+    "transparent": false
+  },
+  {
+    "file": "clients/lavande/assets/wp-ready\\lavande-workstation-detail.jpg",
+    "name": "lavande-workstation-detail.jpg",
+    "size_kb": 229,
+    "dims": [
+      2000,
+      1333
+    ],
+    "transparent": false
+  },
+  {
+    "file": "clients/lavande/assets/wp-ready\\lavande-logo-primary-mauve.png",
+    "name": "lavande-logo-primary-mauve.png",
+    "size_kb": 79,
+    "dims": [
+      1200,
+      664
+    ],
+    "transparent": true
+  },
+  {
+    "file": "clients/lavande/assets/wp-ready\\lavande-logo-primary-white.png",
+    "name": "lavande-logo-primary-white.png",
+    "size_kb": 38,
+    "dims": [
+      1200,
+      664
+    ],
+    "transparent": true
+  },
+  {
+    "file": "clients/lavande/assets/wp-ready\\lavande-logo-monogram-li.png",
+    "name": "lavande-logo-monogram-li.png",
+    "size_kb": 26,
+    "dims": [
+      800,
+      807
+    ],
+    "transparent": true
+  },
+  {
+    "file": "clients/lavande/assets/wp-ready\\lavande-logo-circular-badge.png",
+    "name": "lavande-logo-circular-badge.png",
+    "size_kb": 157,
+    "dims": [
+      800,
+      859
+    ],
+    "transparent": true
+  }
+]
