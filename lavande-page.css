@@ -134,7 +134,7 @@ html body article > .lavande-root { max-width: 100% !important; width: 100vw; ma
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 140px;
+      height: 88px;
     }
     nav.top .brand {
       display: flex;
@@ -142,16 +142,18 @@ html body article > .lavande-root { max-width: 100% !important; width: 100vw; ma
       transition: opacity var(--dur-med) var(--ease-out);
     }
     nav.top .brand img {
-      height: 116px;
+      height: 56px;
       width: auto;
-      max-width: 720px;
+      max-width: 360px;
       display: block;
     }
     @media (max-width: 900px) {
-      nav.top .brand img { height: 88px; max-width: 520px; }
+      nav.top .container { height: 76px; }
+      nav.top .brand img { height: 48px; max-width: 280px; }
     }
     @media (max-width: 640px) {
-      nav.top .brand img { height: 64px; max-width: 340px; }
+      nav.top .container { height: 68px; }
+      nav.top .brand img { height: 40px; max-width: 220px; }
     }
     nav.top ul {
       display: flex;
@@ -184,7 +186,7 @@ html body article > .lavande-root { max-width: 100% !important; width: 100vw; ma
     /* -------------------- 1. HERO · asymmetric split -------------------- */
     section.hero {
       min-height: 100dvh;
-      padding: 200px 0 clamp(4rem, 8vw, 7rem);
+      padding: 140px 0 clamp(4rem, 8vw, 7rem);
       display: grid;
       align-items: center;
       overflow: hidden;
