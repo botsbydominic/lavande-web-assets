@@ -3,9 +3,11 @@
    For any WordPress page or post that doesn't have them baked in.
    Homepage (body.home / body.page-id-20) is skipped.
    No inline HTML assignment — uses DOMParser for XSS safety.
+   Mobile: hamburger toggle → full-height drawer.
    ============================================================ */
 (function () {
   var HOME = "https://lavandenailscafe.com/";
+  var JOURNAL = "https://lavandenailscafe.com/journal/";
   var FRESHA = "https://www.fresha.com/a/lavande-nails-cafe-makati-the-manila-bankers-prosperity-tower-yw8rrfav/booking";
   var IG = "https://www.instagram.com/lavande.ph/";
   var FB = "https://www.facebook.com/profile.php?id=61590822413373";
@@ -15,13 +17,27 @@
     '<nav class="lavande-nav" aria-label="Primary navigation">',
       '<div class="container">',
         '<a href="', HOME, '" class="brand" aria-label="Lavande Nails and Cafe home"><img src="https://lavandenailscafe.com/wp-content/uploads/2026/07/lavande-logo-primary-mauve.png" alt="Lavande Nails and Cafe" /></a>',
+        '<ul class="lavande-nav-links">',
+          '<li><a href="', HOME, '#rituals">Rituals</a></li>',
+          '<li><a href="', HOME, '#cafe">Cafe</a></li>',
+          '<li><a href="', HOME, '#founder">About</a></li>',
+          '<li><a href="', JOURNAL, '">Journal</a></li>',
+          '<li><a href="', HOME, '#visit">Visit</a></li>',
+        '</ul>',
+        '<a class="reserve" href="', FRESHA, '" target="_blank" rel="noopener" aria-label="Reserve a nail ritual on Fresha (opens in new tab)">Reserve</a>',
+        '<button class="lavande-hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="lavande-drawer">',
+          '<span></span><span></span><span></span>',
+        '</button>',
+      '</div>',
+      '<div class="lavande-drawer" id="lavande-drawer" aria-hidden="true">',
         '<ul>',
           '<li><a href="', HOME, '#rituals">Rituals</a></li>',
           '<li><a href="', HOME, '#cafe">Cafe</a></li>',
           '<li><a href="', HOME, '#founder">About</a></li>',
+          '<li><a href="', JOURNAL, '">Journal</a></li>',
           '<li><a href="', HOME, '#visit">Visit</a></li>',
+          '<li class="drawer-cta"><a href="', FRESHA, '" target="_blank" rel="noopener">Reserve on Fresha</a></li>',
         '</ul>',
-        '<a class="reserve" href="', FRESHA, '" target="_blank" rel="noopener" aria-label="Reserve a nail ritual on Fresha (opens in new tab)">Reserve</a>',
       '</div>',
     '</nav>'
   ].join('');
@@ -46,6 +62,32 @@
     return doc.body.firstChild;
   }
 
+  function wireHamburger() {
+    var btn = document.querySelector('.lavande-hamburger');
+    var drawer = document.getElementById('lavande-drawer');
+    if (!btn || !drawer) return;
+    function close() {
+      document.body.classList.remove('lav-menu-open');
+      btn.setAttribute('aria-expanded', 'false');
+      drawer.setAttribute('aria-hidden', 'true');
+    }
+    function open() {
+      document.body.classList.add('lav-menu-open');
+      btn.setAttribute('aria-expanded', 'true');
+      drawer.setAttribute('aria-hidden', 'false');
+    }
+    btn.addEventListener('click', function () {
+      if (document.body.classList.contains('lav-menu-open')) close();
+      else open();
+    });
+    drawer.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') close();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && document.body.classList.contains('lav-menu-open')) close();
+    });
+  }
+
   function inject() {
     var b = document.body;
     if (!b) return;
@@ -66,7 +108,7 @@
       });
     }
 
-    // Insert skip link + nav as two nodes at the top of body
+    // Insert skip link + nav nodes at the top of body
     var doc = new DOMParser().parseFromString(HEADER_HTML, 'text/html');
     var nodes = Array.prototype.slice.call(doc.body.childNodes);
     for (var i = nodes.length - 1; i >= 0; i--) {
@@ -84,7 +126,6 @@
     if (titleEl && !titleEl.querySelector('.lav-title-main')) {
       var raw = titleEl.textContent.trim();
       var splitIdx = -1;
-      // Try in priority order: '?', ':', ' — '
       var qIdx = raw.indexOf('?');
       var cIdx = raw.indexOf(':');
       var eIdx = raw.indexOf(' — ');
@@ -107,6 +148,8 @@
         }
       }
     }
+
+    wireHamburger();
   }
 
   if (document.readyState === 'loading') {
