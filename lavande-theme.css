@@ -896,17 +896,19 @@ body:not(.home):not(.page-id-20) .lavande-drawer ul li.drawer-cta {
   margin-top: 1.5rem;
 }
 body:not(.home):not(.page-id-20) .lavande-drawer ul li.drawer-cta a {
-  background: #9E7BA4;
+  background: #5D4A5F;
   color: #FEEEEB;
   border-radius: 999px;
   text-align: center;
   padding: 1rem 1.5rem;
   border-bottom: none;
   font-weight: 600;
+  letter-spacing: 0.18em;
 }
 body:not(.home):not(.page-id-20) .lavande-drawer ul li.drawer-cta a:hover {
-  background: #5D4A5F;
+  background: #4A3A4D;
   padding-left: 1.5rem;
+  color: #FEEEEB;
 }
 body:not(.home):not(.page-id-20).lav-menu-open .lavande-drawer {
   transform: translateY(0);
