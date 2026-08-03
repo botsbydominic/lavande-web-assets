@@ -427,3 +427,177 @@ body:not(.home):not(.page-id-20) .wp-block-search__input {
     font-size: clamp(1.8rem, 7vw, 2.6rem) !important;
   }
 }
+
+/* ============================================================
+   BRANDED HEADER + FOOTER (mirror homepage on all pages/posts)
+   Applied to nav.lavande-nav + footer.lavande-footer whether
+   baked into post content OR injected via lavande-inject.js
+   ============================================================ */
+
+/* Hide Twenty Twenty-Four's default header + footer on non-home pages */
+body:not(.home):not(.page-id-20) > .wp-site-blocks > header.wp-block-template-part,
+body:not(.home):not(.page-id-20) > .wp-site-blocks > footer.wp-block-template-part {
+  display: none !important;
+}
+
+/* Branded header */
+body:not(.home):not(.page-id-20) .lavande-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(254, 238, 235, 0.95);
+  backdrop-filter: saturate(1.4) blur(12px);
+  -webkit-backdrop-filter: saturate(1.4) blur(12px);
+  border-bottom: 1px solid var(--lav-divider);
+  margin: 0;
+  padding: 0;
+}
+body:not(.home):not(.page-id-20) .lavande-nav .container {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 3rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 88px;
+}
+body:not(.home):not(.page-id-20) .lavande-nav .brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none !important;
+}
+body:not(.home):not(.page-id-20) .lavande-nav .brand img {
+  height: 56px;
+  width: auto;
+  max-width: 360px;
+  display: block;
+}
+body:not(.home):not(.page-id-20) .lavande-nav ul {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: var(--lav-font-body) !important;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+body:not(.home):not(.page-id-20) .lavande-nav ul li {
+  margin: 0;
+  padding: 0;
+  font-size: 12px !important;
+}
+body:not(.home):not(.page-id-20) .lavande-nav ul a {
+  color: var(--lav-aubergine) !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease;
+}
+body:not(.home):not(.page-id-20) .lavande-nav ul a:hover {
+  color: var(--lav-mauve) !important;
+}
+body:not(.home):not(.page-id-20) .lavande-nav .reserve {
+  background: var(--lav-aubergine) !important;
+  color: var(--lav-blush) !important;
+  padding: 10px 20px !important;
+  border-radius: 2px !important;
+  font-family: var(--lav-font-body) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  text-decoration: none !important;
+  transition: background 0.2s ease;
+  border: none !important;
+}
+body:not(.home):not(.page-id-20) .lavande-nav .reserve:hover {
+  background: var(--lav-mauve) !important;
+}
+
+/* Branded footer */
+body:not(.home):not(.page-id-20) .lavande-footer {
+  background: var(--lav-aubergine) !important;
+  color: var(--lav-blush) !important;
+  padding: 4rem 0 2rem !important;
+  margin: 5rem 0 0 !important;
+  font-family: var(--lav-font-body) !important;
+  width: 100vw;
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+}
+body:not(.home):not(.page-id-20) .lavande-footer .container {
+  max-width: 1360px !important;
+  margin: 0 auto !important;
+  padding: 0 clamp(1.25rem, 4vw, 3rem) !important;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 2.5rem;
+}
+body:not(.home):not(.page-id-20) .lavande-footer .brand-block .footer-logo {
+  height: 108px !important;
+  width: auto;
+  max-width: 260px;
+  display: block;
+  margin-bottom: 1rem;
+}
+body:not(.home):not(.page-id-20) .lavande-footer .brand-block p {
+  font-family: var(--lav-font-display) !important;
+  font-style: italic;
+  font-size: 1.15rem !important;
+  color: var(--lav-blush) !important;
+  opacity: 0.85;
+  margin: 0 !important;
+  max-width: none;
+}
+body:not(.home):not(.page-id-20) .lavande-footer h4 {
+  font-family: var(--lav-font-body) !important;
+  font-size: 10px !important;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--lav-lavender-light) !important;
+  margin: 0 0 1rem !important;
+  font-weight: 500;
+}
+body:not(.home):not(.page-id-20) .lavande-footer p {
+  font-family: var(--lav-font-body) !important;
+  color: var(--lav-blush) !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  margin: 0 0 0.5rem !important;
+  max-width: none;
+}
+body:not(.home):not(.page-id-20) .lavande-footer a {
+  color: var(--lav-blush) !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease;
+}
+body:not(.home):not(.page-id-20) .lavande-footer a:hover {
+  color: var(--lav-lavender-light) !important;
+}
+body:not(.home):not(.page-id-20) .lavande-footer .bottom {
+  max-width: 1360px;
+  margin: 2.5rem auto 0;
+  padding: 1.5rem clamp(1.25rem, 4vw, 3rem) 0;
+  border-top: 1px solid rgba(254, 238, 235, 0.2);
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px !important;
+  color: var(--lav-lavender-light) !important;
+  letter-spacing: 0.08em;
+  gap: 1rem;
+}
+
+/* Responsive header + footer */
+@media (max-width: 900px) {
+  body:not(.home):not(.page-id-20) .lavande-nav ul { display: none; }
+  body:not(.home):not(.page-id-20) .lavande-nav .container { height: 76px; }
+  body:not(.home):not(.page-id-20) .lavande-nav .brand img { height: 48px; max-width: 280px; }
+  body:not(.home):not(.page-id-20) .lavande-footer .container { grid-template-columns: 1fr; }
+  body:not(.home):not(.page-id-20) .lavande-footer .bottom { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+}
+@media (max-width: 640px) {
+  body:not(.home):not(.page-id-20) .lavande-nav .container { height: 68px; }
+  body:not(.home):not(.page-id-20) .lavande-nav .brand img { height: 40px; max-width: 220px; }
+  body:not(.home):not(.page-id-20) .lavande-footer { padding: 3rem 0 1.5rem !important; }
+}
