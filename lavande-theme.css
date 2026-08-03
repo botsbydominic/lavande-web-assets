@@ -914,10 +914,10 @@ body:not(.home):not(.page-id-20).lav-menu-open {
 
 /* Responsive header + footer */
 @media (max-width: 900px) {
-  body:not(.home):not(.page-id-20) .lavande-nav-links { display: none; }
-  body:not(.home):not(.page-id-20) .lavande-nav .reserve { display: none; }
-  body:not(.home):not(.page-id-20) .lavande-hamburger { display: flex; }
-  body:not(.home):not(.page-id-20) .lavande-drawer { display: block; }
+  body:not(.home):not(.page-id-20) .lavande-nav ul.lavande-nav-links { display: none !important; }
+  body:not(.home):not(.page-id-20) .lavande-nav a.reserve { display: none !important; }
+  body:not(.home):not(.page-id-20) .lavande-hamburger { display: flex !important; }
+  body:not(.home):not(.page-id-20) .lavande-drawer { display: block !important; }
   body:not(.home):not(.page-id-20) .lavande-nav .container { height: 76px; justify-content: space-between; }
   body:not(.home):not(.page-id-20) .lavande-nav .brand img { height: 48px; max-width: 280px; }
   body:not(.home):not(.page-id-20) .lavande-footer .container { grid-template-columns: 1fr; }
