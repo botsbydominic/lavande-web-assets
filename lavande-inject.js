@@ -57,6 +57,15 @@
     var themeFooters = document.querySelectorAll('footer.wp-block-template-part');
     themeFooters.forEach(function (el) { el.style.setProperty('display', 'none', 'important'); });
 
+    // Hoist any SEO meta tags from post content into <head> (same trick as homepage)
+    var root = document.querySelector('.lavande-article-root, .lavande-page');
+    if (root) {
+      var sels = ['meta[name="description"]','meta[name="keywords"]','meta[property^="og:"]','meta[name^="twitter:"]','meta[name^="geo."]','meta[name="ICBM"]','meta[name="robots"]','meta[name="author"]','link[rel="icon"]','link[rel="apple-touch-icon"]','link[rel="canonical"]'];
+      sels.forEach(function (s) {
+        root.querySelectorAll(s).forEach(function (t) { document.head.appendChild(t); });
+      });
+    }
+
     // Insert skip link + nav as two nodes at the top of body
     var doc = new DOMParser().parseFromString(HEADER_HTML, 'text/html');
     var nodes = Array.prototype.slice.call(doc.body.childNodes);
