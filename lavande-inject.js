@@ -150,6 +150,104 @@
     }
 
     wireHamburger();
+    loadJournalArchive();
+  }
+
+  // ------------------------------------------------------------
+  // Journal archive loader — fires only on the /journal/ page
+  // which contains a #lav-journal-grid container.
+  // Pure DOM API: no innerHTML, no string-concatenated HTML.
+  // ------------------------------------------------------------
+  function decodeEntities(s) {
+    // WP REST returns titles/excerpts with HTML entities like &#8217; and &amp;
+    // Convert them to plain characters for use with textContent.
+    var t = document.createElement('textarea');
+    t.innerHTML = s;
+    return t.value;
+  }
+  function fmtDate(iso) {
+    try {
+      var d = new Date(iso);
+      var m = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      return m[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+    } catch (e) { return ''; }
+  }
+  function stripTags(html) {
+    // Extract text from HTML by parsing and reading textContent — safe, no eval
+    var doc = new DOMParser().parseFromString(html || '', 'text/html');
+    return doc.body.textContent || '';
+  }
+  function emptyMsg(grid, msg) {
+    while (grid.firstChild) grid.removeChild(grid.firstChild);
+    var div = document.createElement('div');
+    div.style.gridColumn = '1/-1';
+    div.style.textAlign = 'center';
+    div.style.color = '#8b7a9c';
+    div.style.fontFamily = 'Manrope,sans-serif';
+    div.style.padding = '3rem 0';
+    div.textContent = msg;
+    grid.appendChild(div);
+  }
+  function buildCard(p) {
+    var media = (p._embedded && p._embedded['wp:featuredmedia'] && p._embedded['wp:featuredmedia'][0]) || null;
+    var imgUrl = (media && media.source_url) ? media.source_url : 'https://lavandenailscafe.com/wp-content/uploads/2026/07/lavande-wisteria-interior-v2-scaled.jpg';
+    var alt = (media && media.alt_text) ? decodeEntities(media.alt_text) : decodeEntities(p.title.rendered || 'Journal entry');
+    var title = decodeEntities(p.title.rendered || '');
+    var link = p.link;
+    var date = fmtDate(p.date);
+    var excerpt = stripTags(p.excerpt && p.excerpt.rendered).trim();
+    if (excerpt.length > 180) excerpt = excerpt.slice(0, 177).trim() + '…';
+
+    var a = document.createElement('a');
+    a.href = link;
+    a.className = 'journal-card';
+
+    var imgWrap = document.createElement('div');
+    imgWrap.className = 'card-image';
+    var img = document.createElement('img');
+    img.src = imgUrl;
+    img.alt = alt;
+    img.loading = 'lazy';
+    imgWrap.appendChild(img);
+    a.appendChild(imgWrap);
+
+    var meta = document.createElement('div');
+    meta.className = 'card-meta';
+    meta.textContent = date + '  ·  Lavande Editorial';
+    a.appendChild(meta);
+
+    var h2 = document.createElement('h2');
+    h2.textContent = title;
+    a.appendChild(h2);
+
+    var p2 = document.createElement('p');
+    p2.className = 'card-excerpt';
+    p2.textContent = excerpt;
+    a.appendChild(p2);
+
+    var read = document.createElement('span');
+    read.className = 'card-read-more';
+    read.textContent = 'Read the entry';
+    a.appendChild(read);
+
+    return a;
+  }
+  function loadJournalArchive() {
+    var grid = document.getElementById('lav-journal-grid');
+    if (!grid) return;
+    fetch('/wp-json/wp/v2/posts?categories=4&per_page=20&_embed=wp:featuredmedia&orderby=date&order=desc')
+      .then(function (r) { return r.json(); })
+      .then(function (posts) {
+        if (!Array.isArray(posts) || !posts.length) {
+          emptyMsg(grid, 'New editorial entries coming soon.');
+          return;
+        }
+        while (grid.firstChild) grid.removeChild(grid.firstChild);
+        posts.forEach(function (p) { grid.appendChild(buildCard(p)); });
+      })
+      .catch(function () {
+        emptyMsg(grid, 'Journal entries could not be loaded. Please refresh.');
+      });
   }
 
   if (document.readyState === 'loading') {
