@@ -833,13 +833,13 @@ body:not(.home):not(.page-id-20) .lavande-hamburger span {
   transition: transform 250ms ease, opacity 200ms ease;
   transform-origin: center;
 }
-body:not(.home):not(.page-id-20) .lav-menu-open .lavande-hamburger span:nth-child(1) {
+body:not(.home):not(.page-id-20).lav-menu-open .lavande-hamburger span:nth-child(1) {
   transform: translateY(6.5px) rotate(45deg);
 }
-body:not(.home):not(.page-id-20) .lav-menu-open .lavande-hamburger span:nth-child(2) {
+body:not(.home):not(.page-id-20).lav-menu-open .lavande-hamburger span:nth-child(2) {
   opacity: 0;
 }
-body:not(.home):not(.page-id-20) .lav-menu-open .lavande-hamburger span:nth-child(3) {
+body:not(.home):not(.page-id-20).lav-menu-open .lavande-hamburger span:nth-child(3) {
   transform: translateY(-6.5px) rotate(-45deg);
 }
 
@@ -903,7 +903,7 @@ body:not(.home):not(.page-id-20) .lavande-drawer ul li.drawer-cta a:hover {
   background: #5D4A5F;
   padding-left: 1.5rem;
 }
-body:not(.home):not(.page-id-20) .lav-menu-open .lavande-drawer {
+body:not(.home):not(.page-id-20).lav-menu-open .lavande-drawer {
   transform: translateY(0);
   opacity: 1;
   visibility: visible;
