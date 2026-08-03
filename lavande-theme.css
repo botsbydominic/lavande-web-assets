@@ -151,24 +151,78 @@ body:not(.home):not(.page-id-20) .lav-title-main {
   line-height: 1.05;
   letter-spacing: -0.015em;
   color: var(--lav-aubergine);
-  margin-bottom: 0.65rem;
+  margin: 0 0 0.35rem;
 }
 body:not(.home):not(.page-id-20) .lav-title-sub {
   display: block;
   font-family: var(--lav-font-display) !important;
-  font-size: clamp(1.05rem, 1.85vw, 1.5rem) !important;
+  font-size: clamp(1rem, 1.6vw, 1.35rem) !important;
   font-weight: 400;
   font-style: italic;
   line-height: 1.3;
   letter-spacing: 0.005em;
   color: var(--lav-text-muted);
-  margin-top: 0;
+  margin: 0;
   max-width: 720px;
   text-wrap: balance;
 }
-body:not(.home):not(.page-id-20) .wp-block-post-title br + .lav-title-sub,
-body:not(.home):not(.page-id-20) .entry-title br + .lav-title-sub {
-  margin-top: 0.75rem;
+
+/* ============================================================
+   POST META NORMALIZATION — kill Twenty Twenty-Four's mismatched styles
+   Every element (date, author, category, separator text) gets the
+   same tiny mauve small-caps treatment. No underlines. Balanced.
+   ============================================================ */
+body:not(.home):not(.page-id-20) .wp-block-post-date,
+body:not(.home):not(.page-id-20) .wp-block-post-date *,
+body:not(.home):not(.page-id-20) .wp-block-post-author,
+body:not(.home):not(.page-id-20) .wp-block-post-author *,
+body:not(.home):not(.page-id-20) .wp-block-post-author-name,
+body:not(.home):not(.page-id-20) .wp-block-post-author-name *,
+body:not(.home):not(.page-id-20) .wp-block-post-terms,
+body:not(.home):not(.page-id-20) .wp-block-post-terms *,
+body:not(.home):not(.page-id-20) .wp-block-post-template-meta,
+body:not(.home):not(.page-id-20) main .wp-block-group.has-small-font-size,
+body:not(.home):not(.page-id-20) main .wp-block-group.has-small-font-size * {
+  font-family: var(--lav-font-body) !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  color: var(--lav-text-muted) !important;
+  letter-spacing: 0.16em !important;
+  text-transform: uppercase !important;
+  line-height: 1.4 !important;
+  text-decoration: none !important;
+  border: none !important;
+}
+body:not(.home):not(.page-id-20) .wp-block-post-date a,
+body:not(.home):not(.page-id-20) .wp-block-post-author-name a,
+body:not(.home):not(.page-id-20) .wp-block-post-terms a {
+  color: var(--lav-mauve) !important;
+  text-decoration: none !important;
+  border: none !important;
+  transition: color 0.2s ease;
+}
+body:not(.home):not(.page-id-20) .wp-block-post-date a:hover,
+body:not(.home):not(.page-id-20) .wp-block-post-author-name a:hover,
+body:not(.home):not(.page-id-20) .wp-block-post-terms a:hover {
+  color: var(--lav-aubergine) !important;
+}
+/* The "— by" and "IN" literals live in a group; shrink them too */
+body:not(.home):not(.page-id-20) main .wp-block-post-template-meta,
+body:not(.home):not(.page-id-20) main [class*="post-meta"],
+body:not(.home):not(.page-id-20) main [class*="post-meta"] * {
+  font-size: 11px !important;
+  letter-spacing: 0.16em !important;
+  text-transform: uppercase !important;
+  color: var(--lav-text-muted) !important;
+  font-family: var(--lav-font-body) !important;
+}
+/* Center the meta row, add breathing space above and below */
+body:not(.home):not(.page-id-20) main .wp-block-group:has(> .wp-block-post-date),
+body:not(.home):not(.page-id-20) main .wp-block-group:has(> .wp-block-post-author),
+body:not(.home):not(.page-id-20) main .wp-block-group:has(> .wp-block-post-terms) {
+  margin-top: 1.5rem !important;
+  margin-bottom: 2.5rem !important;
+  gap: 0.5rem !important;
 }
 
 /* Featured image — 1200px wide, generous editorial frame */

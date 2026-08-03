@@ -103,7 +103,6 @@
           subSpan.className = 'lav-title-sub';
           subSpan.textContent = subText;
           titleEl.appendChild(mainSpan);
-          titleEl.appendChild(document.createElement('br'));
           titleEl.appendChild(subSpan);
         }
       }
