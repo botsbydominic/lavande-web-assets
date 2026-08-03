@@ -77,6 +77,37 @@
     if (main && !main.id) main.id = 'lav-main';
     var foot = parse(FOOTER_HTML);
     if (foot) b.appendChild(foot);
+
+    // Editorial title split — if the post title contains ?, :, or "—",
+    // split it into a display "main" line + smaller "sub" line
+    var titleEl = document.querySelector('.wp-block-post-title, .entry-title, h1.entry-title');
+    if (titleEl && !titleEl.querySelector('.lav-title-main')) {
+      var raw = titleEl.textContent.trim();
+      var splitIdx = -1;
+      // Try in priority order: '?', ':', ' — '
+      var qIdx = raw.indexOf('?');
+      var cIdx = raw.indexOf(':');
+      var eIdx = raw.indexOf(' — ');
+      if (qIdx > 0 && qIdx < raw.length - 3) splitIdx = qIdx + 1;
+      else if (cIdx > 0 && cIdx < raw.length - 3) splitIdx = cIdx + 1;
+      else if (eIdx > 0) splitIdx = eIdx;
+      if (splitIdx > 0) {
+        var mainText = raw.slice(0, splitIdx).trim();
+        var subText = raw.slice(splitIdx).trim();
+        if (subText.length > 0) {
+          while (titleEl.firstChild) titleEl.removeChild(titleEl.firstChild);
+          var mainSpan = document.createElement('span');
+          mainSpan.className = 'lav-title-main';
+          mainSpan.textContent = mainText;
+          var subSpan = document.createElement('span');
+          subSpan.className = 'lav-title-sub';
+          subSpan.textContent = subText;
+          titleEl.appendChild(mainSpan);
+          titleEl.appendChild(document.createElement('br'));
+          titleEl.appendChild(subSpan);
+        }
+      }
+    }
   }
 
   if (document.readyState === 'loading') {
