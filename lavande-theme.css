@@ -1,0 +1,429 @@
+/* ============================================================
+   LAVANDE · Site-wide brand theme
+   Applies Lavande brand tokens to Twenty Twenty-Four theme
+   for all Pages and Blog Posts EXCEPT the custom homepage (page 20).
+   Homepage keeps its own lavande-page.css unchanged.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@300;400;500;600&display=swap');
+
+:root {
+  --lav-white: #FFFFFF;
+  --lav-blush: #FEEEEB;
+  --lav-lavender-light: #BFA1C5;
+  --lav-mauve: #9E7BA4;
+  --lav-aubergine: #5D4A5F;
+  --lav-aubergine-deep: #4A3B4B;
+  --lav-text-muted: #7A6980;
+  --lav-divider: #E7D5DE;
+  --lav-font-display: 'Playfair Display', 'Iowan Old Style', 'Book Antiqua', Georgia, serif;
+  --lav-font-body: 'Manrope', -apple-system, 'Segoe UI', 'Helvetica Neue', sans-serif;
+}
+
+/* -------- Scope: apply everywhere EXCEPT the custom homepage -------- */
+body:not(.home):not(.page-id-20) {
+  background: var(--lav-blush) !important;
+  color: var(--lav-aubergine) !important;
+  font-family: var(--lav-font-body) !important;
+  font-size: 17px;
+  line-height: 1.65;
+  font-feature-settings: "kern" 1, "liga" 1;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Content max-width for readability */
+body:not(.home):not(.page-id-20) .wp-site-blocks > main,
+body:not(.home):not(.page-id-20) .wp-site-blocks > .wp-block-group,
+body:not(.home):not(.page-id-20) main .wp-block-post-content,
+body:not(.home):not(.page-id-20) main .entry-content {
+  max-width: 720px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: clamp(1.25rem, 4vw, 2rem);
+  padding-right: clamp(1.25rem, 4vw, 2rem);
+}
+
+/* Site header */
+body:not(.home):not(.page-id-20) header.wp-block-template-part {
+  background: var(--lav-blush);
+  border-bottom: 1px solid var(--lav-divider);
+  padding: 1.25rem 0;
+}
+body:not(.home):not(.page-id-20) .wp-block-site-title,
+body:not(.home):not(.page-id-20) .wp-block-site-title a {
+  font-family: var(--lav-font-display) !important;
+  color: var(--lav-mauve) !important;
+  font-weight: 400 !important;
+  font-size: 1.35rem !important;
+  letter-spacing: -0.005em;
+  text-decoration: none !important;
+}
+body:not(.home):not(.page-id-20) .wp-block-site-logo img {
+  max-height: 48px;
+  width: auto;
+}
+
+/* Navigation */
+body:not(.home):not(.page-id-20) .wp-block-navigation,
+body:not(.home):not(.page-id-20) .wp-block-navigation a,
+body:not(.home):not(.page-id-20) .wp-block-navigation__container a {
+  font-family: var(--lav-font-body) !important;
+  color: var(--lav-aubergine) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  text-decoration: none !important;
+}
+body:not(.home):not(.page-id-20) .wp-block-navigation a:hover {
+  color: var(--lav-mauve) !important;
+}
+
+/* Post / Page title (hero) */
+body:not(.home):not(.page-id-20) .wp-block-post-title,
+body:not(.home):not(.page-id-20) .entry-title,
+body:not(.home):not(.page-id-20) h1.wp-block-post-title,
+body:not(.home):not(.page-id-20) main h1 {
+  font-family: var(--lav-font-display) !important;
+  font-weight: 400 !important;
+  color: var(--lav-aubergine) !important;
+  font-size: clamp(2.25rem, 5vw, 3.75rem) !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.01em !important;
+  text-wrap: balance;
+  margin: 2rem auto 1.5rem !important;
+  max-width: 720px;
+  padding-left: clamp(1.25rem, 4vw, 2rem);
+  padding-right: clamp(1.25rem, 4vw, 2rem);
+}
+
+/* Featured image */
+body:not(.home):not(.page-id-20) .wp-block-post-featured-image {
+  margin: 2rem 0 3rem !important;
+  max-width: 720px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  overflow: hidden;
+  border-radius: 2px;
+}
+body:not(.home):not(.page-id-20) .wp-block-post-featured-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Post meta */
+body:not(.home):not(.page-id-20) .wp-block-post-date,
+body:not(.home):not(.page-id-20) .wp-block-post-terms,
+body:not(.home):not(.page-id-20) .wp-block-post-author {
+  font-family: var(--lav-font-body) !important;
+  color: var(--lav-text-muted) !important;
+  font-size: 11.5px !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  font-weight: 500;
+}
+body:not(.home):not(.page-id-20) .wp-block-post-date a,
+body:not(.home):not(.page-id-20) .wp-block-post-terms a {
+  color: var(--lav-mauve) !important;
+  text-decoration: none;
+}
+
+/* Content headings — Playfair Display */
+body:not(.home):not(.page-id-20) main h2,
+body:not(.home):not(.page-id-20) .wp-block-post-content h2,
+body:not(.home):not(.page-id-20) .entry-content h2 {
+  font-family: var(--lav-font-display) !important;
+  font-weight: 400 !important;
+  color: var(--lav-aubergine) !important;
+  font-size: clamp(1.6rem, 3vw, 2.2rem) !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.005em;
+  margin: 3rem 0 1rem !important;
+  text-wrap: balance;
+}
+body:not(.home):not(.page-id-20) main h3,
+body:not(.home):not(.page-id-20) .wp-block-post-content h3,
+body:not(.home):not(.page-id-20) .entry-content h3 {
+  font-family: var(--lav-font-display) !important;
+  font-weight: 500 !important;
+  color: var(--lav-aubergine) !important;
+  font-size: 1.5rem !important;
+  line-height: 1.3 !important;
+  margin: 2rem 0 0.75rem !important;
+}
+body:not(.home):not(.page-id-20) main h4,
+body:not(.home):not(.page-id-20) .wp-block-post-content h4,
+body:not(.home):not(.page-id-20) .entry-content h4 {
+  font-family: var(--lav-font-body) !important;
+  font-weight: 600 !important;
+  color: var(--lav-aubergine) !important;
+  font-size: 1.05rem !important;
+  letter-spacing: 0.02em;
+  margin: 1.5rem 0 0.5rem !important;
+}
+
+/* Body paragraphs */
+body:not(.home):not(.page-id-20) main p,
+body:not(.home):not(.page-id-20) .wp-block-post-content p,
+body:not(.home):not(.page-id-20) .entry-content p {
+  font-family: var(--lav-font-body) !important;
+  color: var(--lav-aubergine) !important;
+  font-size: 17px !important;
+  line-height: 1.7 !important;
+  margin-bottom: 1.4rem !important;
+  max-width: 65ch;
+}
+
+/* Italic + em */
+body:not(.home):not(.page-id-20) main em,
+body:not(.home):not(.page-id-20) .wp-block-post-content em,
+body:not(.home):not(.page-id-20) .entry-content em {
+  font-family: var(--lav-font-display) !important;
+  font-style: italic;
+  color: var(--lav-aubergine);
+}
+
+/* Strong */
+body:not(.home):not(.page-id-20) main strong,
+body:not(.home):not(.page-id-20) .wp-block-post-content strong,
+body:not(.home):not(.page-id-20) .entry-content strong {
+  color: var(--lav-aubergine) !important;
+  font-weight: 600 !important;
+}
+
+/* Links */
+body:not(.home):not(.page-id-20) main a:not(.wp-element-button):not(.wp-block-navigation__link):not(.wp-block-site-title a),
+body:not(.home):not(.page-id-20) .wp-block-post-content a,
+body:not(.home):not(.page-id-20) .entry-content a {
+  color: var(--lav-mauve) !important;
+  text-decoration: underline !important;
+  text-decoration-thickness: 1px !important;
+  text-underline-offset: 3px !important;
+  transition: color 0.2s ease;
+}
+body:not(.home):not(.page-id-20) .wp-block-post-content a:hover,
+body:not(.home):not(.page-id-20) .entry-content a:hover {
+  color: var(--lav-aubergine) !important;
+}
+
+/* Blockquote — centered italic, no side-tab (quiet-luxury pattern) */
+body:not(.home):not(.page-id-20) .wp-block-post-content blockquote,
+body:not(.home):not(.page-id-20) .entry-content blockquote,
+body:not(.home):not(.page-id-20) .wp-block-quote {
+  border: none !important;
+  padding: 1rem 1.5rem !important;
+  margin: 2.5rem auto !important;
+  font-family: var(--lav-font-display) !important;
+  font-style: italic;
+  font-size: 1.35rem !important;
+  line-height: 1.5;
+  color: var(--lav-mauve) !important;
+  max-width: 640px;
+  text-align: center;
+  text-wrap: balance;
+}
+
+/* Lists */
+body:not(.home):not(.page-id-20) .wp-block-post-content ul,
+body:not(.home):not(.page-id-20) .wp-block-post-content ol,
+body:not(.home):not(.page-id-20) .entry-content ul,
+body:not(.home):not(.page-id-20) .entry-content ol {
+  padding-left: 1.5rem !important;
+  margin: 1.4rem 0 !important;
+}
+body:not(.home):not(.page-id-20) .wp-block-post-content li,
+body:not(.home):not(.page-id-20) .entry-content li {
+  font-family: var(--lav-font-body) !important;
+  color: var(--lav-aubergine) !important;
+  font-size: 17px !important;
+  line-height: 1.7 !important;
+  margin-bottom: 0.5rem !important;
+}
+body:not(.home):not(.page-id-20) .wp-block-post-content li::marker,
+body:not(.home):not(.page-id-20) .entry-content li::marker {
+  color: var(--lav-mauve);
+}
+
+/* Tables — brand comparison-table pattern */
+body:not(.home):not(.page-id-20) .wp-block-post-content table,
+body:not(.home):not(.page-id-20) .entry-content table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  margin: 2.5rem 0 !important;
+  font-family: var(--lav-font-body) !important;
+  font-size: 14.5px !important;
+  background: var(--lav-white);
+  border: 1px solid var(--lav-divider);
+}
+body:not(.home):not(.page-id-20) .wp-block-post-content thead {
+  background: var(--lav-blush) !important;
+}
+body:not(.home):not(.page-id-20) .wp-block-post-content th {
+  padding: 12px 14px !important;
+  text-align: left !important;
+  border-bottom: 2px solid var(--lav-mauve) !important;
+  color: var(--lav-aubergine) !important;
+  font-weight: 600 !important;
+  font-size: 12px !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  font-family: var(--lav-font-body) !important;
+}
+body:not(.home):not(.page-id-20) .wp-block-post-content td {
+  padding: 12px 14px !important;
+  border-bottom: 1px solid var(--lav-divider) !important;
+  color: var(--lav-aubergine) !important;
+  vertical-align: top;
+  line-height: 1.5;
+}
+body:not(.home):not(.page-id-20) .wp-block-post-content tr:last-child td {
+  border-bottom: none !important;
+}
+body:not(.home):not(.page-id-20) .wp-block-post-content tr:hover td {
+  background: rgba(158, 123, 164, 0.04);
+}
+
+/* Details / FAQ blocks */
+body:not(.home):not(.page-id-20) .wp-block-post-content details,
+body:not(.home):not(.page-id-20) .entry-content details {
+  background: var(--lav-white);
+  border: 1px solid var(--lav-divider);
+  padding: 16px 20px;
+  margin-bottom: 10px !important;
+  border-radius: 2px;
+  transition: border-color 0.2s ease;
+}
+body:not(.home):not(.page-id-20) .wp-block-post-content details[open] {
+  border-color: var(--lav-mauve);
+}
+body:not(.home):not(.page-id-20) .wp-block-post-content details summary,
+body:not(.home):not(.page-id-20) .entry-content details summary {
+  cursor: pointer;
+  font-family: var(--lav-font-body) !important;
+  color: var(--lav-aubergine) !important;
+  font-size: 15.5px !important;
+  font-weight: 500 !important;
+  outline: none;
+  list-style: none;
+  position: relative;
+  padding-right: 24px;
+}
+body:not(.home):not(.page-id-20) .wp-block-post-content details summary::-webkit-details-marker {
+  display: none;
+}
+body:not(.home):not(.page-id-20) .wp-block-post-content details summary::after {
+  content: "+";
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: var(--lav-mauve);
+  font-family: var(--lav-font-display);
+  font-size: 1.4rem;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+body:not(.home):not(.page-id-20) .wp-block-post-content details[open] summary::after {
+  content: "×";
+}
+body:not(.home):not(.page-id-20) .wp-block-post-content details p {
+  margin-top: 12px !important;
+  color: var(--lav-text-muted) !important;
+  font-size: 15.5px !important;
+  line-height: 1.65;
+}
+
+/* HR */
+body:not(.home):not(.page-id-20) .wp-block-post-content hr,
+body:not(.home):not(.page-id-20) .entry-content hr {
+  border: none !important;
+  border-top: 1px solid var(--lav-divider) !important;
+  margin: 3rem auto !important;
+  width: 60%;
+}
+
+/* Buttons */
+body:not(.home):not(.page-id-20) .wp-element-button,
+body:not(.home):not(.page-id-20) .wp-block-button__link {
+  background: var(--lav-aubergine) !important;
+  color: var(--lav-blush) !important;
+  font-family: var(--lav-font-body) !important;
+  font-weight: 500 !important;
+  font-size: 12.5px !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  padding: 12px 24px !important;
+  border-radius: 2px !important;
+  border: none !important;
+  transition: background 0.2s ease;
+  text-decoration: none !important;
+}
+body:not(.home):not(.page-id-20) .wp-element-button:hover,
+body:not(.home):not(.page-id-20) .wp-block-button__link:hover {
+  background: var(--lav-mauve) !important;
+}
+
+/* Footer */
+body:not(.home):not(.page-id-20) footer.wp-block-template-part {
+  background: var(--lav-aubergine) !important;
+  color: var(--lav-blush) !important;
+  padding: 3rem 0 2rem !important;
+  margin-top: 5rem !important;
+  border-top: none !important;
+}
+body:not(.home):not(.page-id-20) footer.wp-block-template-part p,
+body:not(.home):not(.page-id-20) footer.wp-block-template-part a,
+body:not(.home):not(.page-id-20) footer.wp-block-template-part .wp-block-site-title a {
+  color: var(--lav-blush) !important;
+  font-family: var(--lav-font-body) !important;
+}
+body:not(.home):not(.page-id-20) footer.wp-block-template-part a:hover {
+  color: var(--lav-lavender-light) !important;
+}
+
+/* Archive / listing pages */
+body.archive:not(.home):not(.page-id-20) .wp-block-query .wp-block-post {
+  border-bottom: 1px solid var(--lav-divider);
+  padding: 2rem 0;
+}
+body.archive:not(.home):not(.page-id-20) .wp-block-query .wp-block-post:last-child {
+  border-bottom: none;
+}
+body.archive:not(.home):not(.page-id-20) .wp-block-post-title {
+  font-size: clamp(1.5rem, 3vw, 2rem) !important;
+  margin: 0.5rem 0 !important;
+}
+body.archive:not(.home):not(.page-id-20) .wp-block-post-excerpt {
+  color: var(--lav-text-muted) !important;
+  font-family: var(--lav-font-body) !important;
+  font-size: 16px !important;
+  line-height: 1.6 !important;
+}
+
+/* Comments — kill or brand */
+body:not(.home):not(.page-id-20) .wp-block-comments,
+body:not(.home):not(.page-id-20) .comments-area {
+  max-width: 720px;
+  margin: 4rem auto;
+  padding: 0 clamp(1.25rem, 4vw, 2rem);
+}
+
+/* Search form + widgets */
+body:not(.home):not(.page-id-20) .wp-block-search__input {
+  border: 1px solid var(--lav-divider) !important;
+  background: var(--lav-white) !important;
+  color: var(--lav-aubergine) !important;
+  font-family: var(--lav-font-body) !important;
+  padding: 10px 14px !important;
+}
+
+@media (max-width: 720px) {
+  body:not(.home):not(.page-id-20) main p,
+  body:not(.home):not(.page-id-20) .wp-block-post-content p {
+    font-size: 16px !important;
+  }
+  body:not(.home):not(.page-id-20) .wp-block-post-title {
+    font-size: clamp(1.8rem, 7vw, 2.6rem) !important;
+  }
+}
