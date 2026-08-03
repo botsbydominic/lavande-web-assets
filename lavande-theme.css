@@ -817,42 +817,19 @@ body:not(.home):not(.page-id-20) .lavande-skip-link,
 }
 
 /* ============================================================
-   Theme post-meta alignment — center + baseline every child
-   Targets Twenty Twenty-Four's flex group that wraps
-   [date] [—] [by] [author] [terms]. Default is
-   is-content-justification-left; we override to center.
+   Theme post-meta HIDDEN — my byline is the single source
+   The default WP theme meta line (date + author + category)
+   duplicated the byline. Editorial best practice: ONE meta line.
    ============================================================ */
 body:not(.home):not(.page-id-20) .wp-block-group.is-layout-flex:has(> .wp-block-post-date) {
-  justify-content: center !important;
-  align-items: baseline !important;
-  flex-wrap: wrap !important;
-  gap: 0.5em !important;
-  text-align: center !important;
-  width: 100% !important;
-}
-body:not(.home):not(.page-id-20) .wp-block-group.is-layout-flex:has(> .wp-block-post-date) > *,
-body:not(.home):not(.page-id-20) .wp-block-group.is-layout-flex:has(> .wp-block-post-date) > * a,
-body:not(.home):not(.page-id-20) .wp-block-group.is-layout-flex:has(> .wp-block-post-date) > * span,
-body:not(.home):not(.page-id-20) .wp-block-group.is-layout-flex:has(> .wp-block-post-date) > * time {
-  font-family: 'Manrope', sans-serif !important;
-  font-size: 11px !important;
-  line-height: 1 !important;
-  letter-spacing: 0.15em !important;
-  text-transform: uppercase !important;
-  color: #8b7a9c !important;
-  font-weight: 600 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  vertical-align: baseline !important;
-}
-body:not(.home):not(.page-id-20) .wp-block-group.is-layout-flex:has(> .wp-block-post-date) a {
-  text-decoration: underline !important;
-  text-decoration-thickness: 1px !important;
-  text-underline-offset: 3px !important;
+  display: none !important;
 }
 
-/* Article byline — force single line, defeat theme paragraph size */
+/* Article byline — full-width block, truly centered, one line */
 body:not(.home):not(.page-id-20) p.lav-article-byline {
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
   font-family: 'Manrope', sans-serif !important;
   font-size: 0.625rem !important;
   line-height: 1.4 !important;
@@ -860,7 +837,8 @@ body:not(.home):not(.page-id-20) p.lav-article-byline {
   text-transform: uppercase !important;
   color: #8b7a9c !important;
   font-weight: 600 !important;
-  margin: 0 0 2.5rem !important;
+  margin: 0 auto 3rem !important;
+  padding: 0 !important;
   text-align: center !important;
   white-space: nowrap !important;
   overflow: hidden !important;
