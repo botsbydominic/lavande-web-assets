@@ -843,14 +843,18 @@ body:not(.home):not(.page-id-20).lav-menu-open .lavande-hamburger span:nth-child
   transform: translateY(-6.5px) rotate(-45deg);
 }
 
-/* Drawer — hidden by default, slides in on mobile when open */
+/* Drawer — hidden by default, slides in on mobile when open.
+   Explicit height (not top+bottom) because a position:sticky nav ancestor
+   collapses the drawer's auto-height computation to 0. */
 body:not(.home):not(.page-id-20) .lavande-drawer {
   display: none;
   position: fixed;
   top: 76px;
   left: 0;
   right: 0;
-  bottom: 0;
+  width: 100vw;
+  height: calc(100vh - 76px);
+  height: calc(100dvh - 76px);
   background: #FEEEEB;
   z-index: 998;
   padding: 2.5rem 2rem;
@@ -859,6 +863,7 @@ body:not(.home):not(.page-id-20) .lavande-drawer {
   opacity: 0;
   transition: transform 300ms ease, opacity 250ms ease;
   visibility: hidden;
+  box-sizing: border-box;
 }
 body:not(.home):not(.page-id-20) .lavande-drawer ul {
   list-style: none;
@@ -926,7 +931,7 @@ body:not(.home):not(.page-id-20).lav-menu-open {
 @media (max-width: 640px) {
   body:not(.home):not(.page-id-20) .lavande-nav .container { height: 68px; }
   body:not(.home):not(.page-id-20) .lavande-nav .brand img { height: 40px; max-width: 220px; }
-  body:not(.home):not(.page-id-20) .lavande-drawer { top: 68px; padding: 2rem 1.5rem; }
+  body:not(.home):not(.page-id-20) .lavande-drawer { top: 68px; height: calc(100vh - 68px); height: calc(100dvh - 68px); padding: 2rem 1.5rem; }
   body:not(.home):not(.page-id-20) .lavande-footer { padding: 3rem 0 1.5rem !important; }
 }
 
