@@ -11,16 +11,17 @@
   var FB = "https://www.facebook.com/profile.php?id=61590822413373";
 
   var HEADER_HTML = [
-    '<nav class="lavande-nav">',
+    '<a href="#lav-main" class="lavande-skip-link">Skip to content</a>',
+    '<nav class="lavande-nav" aria-label="Primary navigation">',
       '<div class="container">',
-        '<a href="', HOME, '" class="brand"><img src="https://lavandenailscafe.com/wp-content/uploads/2026/07/lavande-logo-primary-mauve.png" alt="Lavande Nails and Cafe" /></a>',
+        '<a href="', HOME, '" class="brand" aria-label="Lavande Nails and Cafe home"><img src="https://lavandenailscafe.com/wp-content/uploads/2026/07/lavande-logo-primary-mauve.png" alt="Lavande Nails and Cafe" /></a>',
         '<ul>',
           '<li><a href="', HOME, '#rituals">Rituals</a></li>',
           '<li><a href="', HOME, '#cafe">Cafe</a></li>',
           '<li><a href="', HOME, '#founder">About</a></li>',
           '<li><a href="', HOME, '#visit">Visit</a></li>',
         '</ul>',
-        '<a class="reserve" href="', FRESHA, '" target="_blank" rel="noopener">Reserve</a>',
+        '<a class="reserve" href="', FRESHA, '" target="_blank" rel="noopener" aria-label="Reserve a nail ritual on Fresha (opens in new tab)">Reserve</a>',
       '</div>',
     '</nav>'
   ].join('');
@@ -56,8 +57,15 @@
     var themeFooters = document.querySelectorAll('footer.wp-block-template-part');
     themeFooters.forEach(function (el) { el.style.setProperty('display', 'none', 'important'); });
 
-    var nav = parse(HEADER_HTML);
-    if (nav) b.insertBefore(nav, b.firstChild);
+    // Insert skip link + nav as two nodes at the top of body
+    var doc = new DOMParser().parseFromString(HEADER_HTML, 'text/html');
+    var nodes = Array.prototype.slice.call(doc.body.childNodes);
+    for (var i = nodes.length - 1; i >= 0; i--) {
+      b.insertBefore(nodes[i], b.firstChild);
+    }
+    // Tag main content wrapper so skip-link works
+    var main = document.querySelector('main, .wp-site-blocks > .wp-block-group, .lavande-article-root, article');
+    if (main && !main.id) main.id = 'lav-main';
     var foot = parse(FOOTER_HTML);
     if (foot) b.appendChild(foot);
   }

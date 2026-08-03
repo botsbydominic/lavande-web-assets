@@ -32,16 +32,32 @@ body:not(.home):not(.page-id-20) {
   text-rendering: optimizeLegibility;
 }
 
-/* Content max-width for readability */
+/* Content max-width — wider, more editorial (matches homepage generosity) */
 body:not(.home):not(.page-id-20) .wp-site-blocks > main,
 body:not(.home):not(.page-id-20) .wp-site-blocks > .wp-block-group,
 body:not(.home):not(.page-id-20) main .wp-block-post-content,
 body:not(.home):not(.page-id-20) main .entry-content {
-  max-width: 720px !important;
+  max-width: 880px !important;
   margin-left: auto !important;
   margin-right: auto !important;
-  padding-left: clamp(1.25rem, 4vw, 2rem);
-  padding-right: clamp(1.25rem, 4vw, 2rem);
+  padding-left: clamp(1.5rem, 6vw, 4rem);
+  padding-right: clamp(1.5rem, 6vw, 4rem);
+}
+
+/* Article body wrapper — full width for immersive vibe */
+body:not(.home):not(.page-id-20) .lavande-article-root {
+  max-width: 100%;
+  padding: 0;
+}
+body:not(.home):not(.page-id-20) .lavande-article-root > * {
+  max-width: 880px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1.5rem, 6vw, 4rem);
+  padding-right: clamp(1.5rem, 6vw, 4rem);
+}
+body:not(.home):not(.page-id-20) .lavande-article-root > table {
+  max-width: 1000px;
 }
 
 /* Site header */
@@ -80,7 +96,7 @@ body:not(.home):not(.page-id-20) .wp-block-navigation a:hover {
   color: var(--lav-mauve) !important;
 }
 
-/* Post / Page title (hero) */
+/* Post / Page title (hero) — wider to match homepage generosity */
 body:not(.home):not(.page-id-20) .wp-block-post-title,
 body:not(.home):not(.page-id-20) .entry-title,
 body:not(.home):not(.page-id-20) h1.wp-block-post-title,
@@ -88,22 +104,20 @@ body:not(.home):not(.page-id-20) main h1 {
   font-family: var(--lav-font-display) !important;
   font-weight: 400 !important;
   color: var(--lav-aubergine) !important;
-  font-size: clamp(2.25rem, 5vw, 3.75rem) !important;
+  font-size: clamp(2.5rem, 6vw, 4rem) !important;
   line-height: 1.1 !important;
   letter-spacing: -0.01em !important;
   text-wrap: balance;
-  margin: 2rem auto 1.5rem !important;
-  max-width: 720px;
-  padding-left: clamp(1.25rem, 4vw, 2rem);
-  padding-right: clamp(1.25rem, 4vw, 2rem);
+  margin: 3rem auto 1.5rem !important;
+  max-width: 880px;
+  padding-left: clamp(1.5rem, 6vw, 4rem);
+  padding-right: clamp(1.5rem, 6vw, 4rem);
 }
 
-/* Featured image */
+/* Featured image — full-bleed like homepage */
 body:not(.home):not(.page-id-20) .wp-block-post-featured-image {
-  margin: 2rem 0 3rem !important;
-  max-width: 720px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
+  margin: 2rem auto 3rem !important;
+  max-width: 1000px !important;
   overflow: hidden;
   border-radius: 2px;
 }
@@ -586,6 +600,67 @@ body:not(.home):not(.page-id-20) .lavande-footer .bottom {
   color: var(--lav-lavender-light) !important;
   letter-spacing: 0.08em;
   gap: 1rem;
+}
+
+/* ============================================================
+   UI/UX PRO MAX FIXES · Focus states, cursor, skip-link
+   ============================================================ */
+
+/* Focus states — visible ring for keyboard nav (WCAG 2.1) */
+body:not(.home):not(.page-id-20) a:focus-visible,
+body:not(.home):not(.page-id-20) button:focus-visible,
+body:not(.home):not(.page-id-20) input:focus-visible,
+body:not(.home):not(.page-id-20) select:focus-visible,
+body:not(.home):not(.page-id-20) textarea:focus-visible,
+body:not(.home):not(.page-id-20) details summary:focus-visible {
+  outline: 2px solid var(--lav-mauve) !important;
+  outline-offset: 3px !important;
+  border-radius: 2px;
+}
+
+/* Cursor pointer on clickable / interactive elements */
+body:not(.home):not(.page-id-20) details summary,
+body:not(.home):not(.page-id-20) .wp-block-post-content details,
+body:not(.home):not(.page-id-20) .lavande-nav .reserve,
+body:not(.home):not(.page-id-20) .wp-element-button {
+  cursor: pointer !important;
+}
+
+/* Skip-to-content link (WCAG 2.1) */
+body:not(.home):not(.page-id-20) .lavande-skip-link,
+.lavande-skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 999999;
+  background: var(--lav-aubergine, #5D4A5F);
+  color: var(--lav-blush, #FEEEEB);
+  padding: 14px 20px;
+  font-family: var(--lav-font-body, sans-serif);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 2px;
+}
+.lavande-skip-link:focus,
+.lavande-skip-link:focus-visible {
+  left: 12px;
+  top: 12px;
+  outline: 2px solid var(--lav-mauve, #9E7BA4);
+  outline-offset: 3px;
+}
+
+/* Prefers-reduced-motion — respect user preference */
+@media (prefers-reduced-motion: reduce) {
+  body:not(.home):not(.page-id-20) *,
+  body:not(.home):not(.page-id-20) *::before,
+  body:not(.home):not(.page-id-20) *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* Responsive header + footer */
