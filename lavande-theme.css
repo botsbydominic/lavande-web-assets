@@ -802,10 +802,123 @@ body:not(.home):not(.page-id-20) .lavande-skip-link,
   }
 }
 
+/* Hamburger button — hidden desktop, shown mobile */
+body:not(.home):not(.page-id-20) .lavande-hamburger {
+  display: none;
+  background: transparent;
+  border: 1px solid rgba(158, 123, 164, 0.3);
+  border-radius: 6px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  margin-left: 0.75rem;
+  transition: background-color 200ms ease, border-color 200ms ease;
+}
+body:not(.home):not(.page-id-20) .lavande-hamburger:hover,
+body:not(.home):not(.page-id-20) .lavande-hamburger:focus-visible {
+  background: rgba(158, 123, 164, 0.08);
+  border-color: rgba(158, 123, 164, 0.5);
+  outline: none;
+}
+body:not(.home):not(.page-id-20) .lavande-hamburger span {
+  display: block;
+  width: 20px;
+  height: 1.5px;
+  background: #5D4A5F;
+  transition: transform 250ms ease, opacity 200ms ease;
+  transform-origin: center;
+}
+body:not(.home):not(.page-id-20) .lav-menu-open .lavande-hamburger span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+body:not(.home):not(.page-id-20) .lav-menu-open .lavande-hamburger span:nth-child(2) {
+  opacity: 0;
+}
+body:not(.home):not(.page-id-20) .lav-menu-open .lavande-hamburger span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+/* Drawer — hidden by default, slides in on mobile when open */
+body:not(.home):not(.page-id-20) .lavande-drawer {
+  display: none;
+  position: fixed;
+  top: 76px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #FEEEEB;
+  z-index: 998;
+  padding: 2.5rem 2rem;
+  overflow-y: auto;
+  transform: translateY(-8px);
+  opacity: 0;
+  transition: transform 300ms ease, opacity 250ms ease;
+  visibility: hidden;
+}
+body:not(.home):not(.page-id-20) .lavande-drawer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+body:not(.home):not(.page-id-20) .lavande-drawer ul li a {
+  display: block;
+  padding: 1.15rem 0.5rem;
+  font-family: 'Manrope', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #5D4A5F;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(158, 123, 164, 0.15);
+  transition: color 200ms ease, padding-left 200ms ease;
+}
+body:not(.home):not(.page-id-20) .lavande-drawer ul li a:hover,
+body:not(.home):not(.page-id-20) .lavande-drawer ul li a:focus-visible {
+  color: #9E7BA4;
+  padding-left: 1rem;
+  outline: none;
+}
+body:not(.home):not(.page-id-20) .lavande-drawer ul li.drawer-cta {
+  margin-top: 1.5rem;
+}
+body:not(.home):not(.page-id-20) .lavande-drawer ul li.drawer-cta a {
+  background: #9E7BA4;
+  color: #FEEEEB;
+  border-radius: 999px;
+  text-align: center;
+  padding: 1rem 1.5rem;
+  border-bottom: none;
+  font-weight: 600;
+}
+body:not(.home):not(.page-id-20) .lavande-drawer ul li.drawer-cta a:hover {
+  background: #5D4A5F;
+  padding-left: 1.5rem;
+}
+body:not(.home):not(.page-id-20) .lav-menu-open .lavande-drawer {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+body:not(.home):not(.page-id-20).lav-menu-open {
+  overflow: hidden;
+}
+
 /* Responsive header + footer */
 @media (max-width: 900px) {
-  body:not(.home):not(.page-id-20) .lavande-nav ul { display: none; }
-  body:not(.home):not(.page-id-20) .lavande-nav .container { height: 76px; }
+  body:not(.home):not(.page-id-20) .lavande-nav-links { display: none; }
+  body:not(.home):not(.page-id-20) .lavande-nav .reserve { display: none; }
+  body:not(.home):not(.page-id-20) .lavande-hamburger { display: flex; }
+  body:not(.home):not(.page-id-20) .lavande-drawer { display: block; }
+  body:not(.home):not(.page-id-20) .lavande-nav .container { height: 76px; justify-content: space-between; }
   body:not(.home):not(.page-id-20) .lavande-nav .brand img { height: 48px; max-width: 280px; }
   body:not(.home):not(.page-id-20) .lavande-footer .container { grid-template-columns: 1fr; }
   body:not(.home):not(.page-id-20) .lavande-footer .bottom { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
@@ -813,7 +926,119 @@ body:not(.home):not(.page-id-20) .lavande-skip-link,
 @media (max-width: 640px) {
   body:not(.home):not(.page-id-20) .lavande-nav .container { height: 68px; }
   body:not(.home):not(.page-id-20) .lavande-nav .brand img { height: 40px; max-width: 220px; }
+  body:not(.home):not(.page-id-20) .lavande-drawer { top: 68px; padding: 2rem 1.5rem; }
   body:not(.home):not(.page-id-20) .lavande-footer { padding: 3rem 0 1.5rem !important; }
+}
+
+/* ============================================================
+   Journal archive page — on-brand editorial listing
+   Class .lavande-journal-archive wraps a grid of post cards.
+   ============================================================ */
+body:not(.home):not(.page-id-20) .lavande-journal-archive {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  font-family: 'Manrope', sans-serif;
+}
+body:not(.home):not(.page-id-20) .lavande-journal-archive .archive-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+body:not(.home):not(.page-id-20) .lavande-journal-archive .archive-header h1 {
+  font-family: 'Playfair Display', 'Rengobriup', Georgia, serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  color: #5D4A5F;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin: 0 0 1rem;
+  line-height: 1.1;
+}
+body:not(.home):not(.page-id-20) .lavande-journal-archive .archive-header p {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  color: #8b7a9c;
+  margin: 0 auto;
+  max-width: 640px;
+  line-height: 1.5;
+}
+body:not(.home):not(.page-id-20) .lavande-journal-archive .archive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 3rem 2.5rem;
+}
+body:not(.home):not(.page-id-20) .lavande-journal-archive .journal-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 300ms ease;
+}
+body:not(.home):not(.page-id-20) .lavande-journal-archive .journal-card:hover {
+  transform: translateY(-4px);
+}
+body:not(.home):not(.page-id-20) .lavande-journal-archive .journal-card .card-image {
+  aspect-ratio: 3 / 2;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #F5DDD8;
+}
+body:not(.home):not(.page-id-20) .lavande-journal-archive .journal-card .card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 600ms ease;
+}
+body:not(.home):not(.page-id-20) .lavande-journal-archive .journal-card:hover .card-image img {
+  transform: scale(1.04);
+}
+body:not(.home):not(.page-id-20) .lavande-journal-archive .journal-card .card-meta {
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #8b7a9c;
+  font-weight: 600;
+}
+body:not(.home):not(.page-id-20) .lavande-journal-archive .journal-card h2 {
+  font-family: 'Playfair Display', 'Rengobriup', Georgia, serif;
+  font-size: 1.6rem;
+  color: #5D4A5F;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  margin: 0;
+  line-height: 1.2;
+}
+body:not(.home):not(.page-id-20) .lavande-journal-archive .journal-card p.card-excerpt {
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: #5D4A5F;
+  margin: 0;
+  opacity: 0.85;
+}
+body:not(.home):not(.page-id-20) .lavande-journal-archive .journal-card .card-read-more {
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #9E7BA4;
+  font-weight: 600;
+  margin-top: 0.25rem;
+  border-bottom: 1px solid rgba(158, 123, 164, 0.3);
+  padding-bottom: 4px;
+  align-self: flex-start;
+  transition: color 200ms ease, border-color 200ms ease;
+}
+body:not(.home):not(.page-id-20) .lavande-journal-archive .journal-card:hover .card-read-more {
+  color: #5D4A5F;
+  border-color: #5D4A5F;
+}
+@media (max-width: 640px) {
+  body:not(.home):not(.page-id-20) .lavande-journal-archive { padding: 2.5rem 1.25rem; }
+  body:not(.home):not(.page-id-20) .lavande-journal-archive .archive-header { margin-bottom: 2.5rem; }
+  body:not(.home):not(.page-id-20) .lavande-journal-archive .archive-grid { grid-template-columns: 1fr; gap: 2.5rem; }
 }
 
 /* ============================================================
