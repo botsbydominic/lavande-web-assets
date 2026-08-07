@@ -612,7 +612,7 @@ body:not(.home):not(.page-id-20) .lavande-nav .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 88px;
+  height: 100px;
 }
 body:not(.home):not(.page-id-20) .lavande-nav .brand {
   display: flex;
@@ -620,9 +620,9 @@ body:not(.home):not(.page-id-20) .lavande-nav .brand {
   text-decoration: none !important;
 }
 body:not(.home):not(.page-id-20) .lavande-nav .brand img {
-  height: 56px;
+  height: 72px;
   width: auto;
-  max-width: 360px;
+  max-width: 440px;
   display: block;
 }
 body:not(.home):not(.page-id-20) .lavande-nav ul {
@@ -849,12 +849,12 @@ body:not(.home):not(.page-id-20).lav-menu-open .lavande-hamburger span:nth-child
 body:not(.home):not(.page-id-20) .lavande-drawer {
   display: none;
   position: fixed;
-  top: 76px;
+  top: 88px;
   left: 0;
   right: 0;
   width: 100vw;
-  height: calc(100vh - 76px);
-  height: calc(100dvh - 76px);
+  height: calc(100vh - 88px);
+  height: calc(100dvh - 88px);
   background: #FEEEEB;
   z-index: 998;
   padding: 2.5rem 2rem;
@@ -925,15 +925,15 @@ body:not(.home):not(.page-id-20).lav-menu-open {
   body:not(.home):not(.page-id-20) .lavande-nav a.reserve { display: none !important; }
   body:not(.home):not(.page-id-20) .lavande-hamburger { display: flex !important; }
   body:not(.home):not(.page-id-20) .lavande-drawer { display: block !important; }
-  body:not(.home):not(.page-id-20) .lavande-nav .container { height: 76px; justify-content: space-between; }
-  body:not(.home):not(.page-id-20) .lavande-nav .brand img { height: 48px; max-width: 280px; }
+  body:not(.home):not(.page-id-20) .lavande-nav .container { height: 88px; justify-content: space-between; }
+  body:not(.home):not(.page-id-20) .lavande-nav .brand img { height: 62px; max-width: 340px; }
   body:not(.home):not(.page-id-20) .lavande-footer .container { grid-template-columns: 1fr; }
   body:not(.home):not(.page-id-20) .lavande-footer .bottom { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
 }
 @media (max-width: 640px) {
-  body:not(.home):not(.page-id-20) .lavande-nav .container { height: 68px; }
-  body:not(.home):not(.page-id-20) .lavande-nav .brand img { height: 40px; max-width: 220px; }
-  body:not(.home):not(.page-id-20) .lavande-drawer { top: 68px; height: calc(100vh - 68px); height: calc(100dvh - 68px); padding: 2rem 1.5rem; }
+  body:not(.home):not(.page-id-20) .lavande-nav .container { height: 76px; }
+  body:not(.home):not(.page-id-20) .lavande-nav .brand img { height: 56px; max-width: 280px; }
+  body:not(.home):not(.page-id-20) .lavande-drawer { top: 76px; height: calc(100vh - 76px); height: calc(100dvh - 76px); padding: 2rem 1.5rem; }
   body:not(.home):not(.page-id-20) .lavande-footer { padding: 3rem 0 1.5rem !important; }
 }
 
